@@ -108,25 +108,26 @@ public class AlchemistLabOverlay extends Overlay {
 			}
 
 			// Set color dots for orders
-			int x1 = order.widget.getBounds().x + order.widget.getBounds().width;
-			int y1 = order.widget.getBounds().y + order.widget.getBounds().height / 2;
-			int size = (int) (order.widget.getBounds().height * 0.33);
-			y1 -= size / 2;
-			x1 += (size / 3);
-			// Render ingredient #1
-			graphics.setColor(PotionIngredient.fromId(order.potion.i1).color());
-			graphics.fillOval(x1, y1, size, size);
-			x1 += size + (size / 3);
+			if (config.enableDistractedOverlay()) {
+				int x1 = order.widget.getBounds().x + order.widget.getBounds().width;
+				int y1 = order.widget.getBounds().y + order.widget.getBounds().height / 2;
+				int size = (int) (order.widget.getBounds().height * 0.33);
+				y1 -= size / 2;
+				x1 += (size / 3);
+				// Render ingredient #1
+				graphics.setColor(PotionIngredient.fromId(order.potion.i1).color());
+				graphics.fillOval(x1, y1, size, size);
+				x1 += size + (size / 3);
 
-			// Render ingredient #2
-			graphics.setColor(PotionIngredient.fromId(order.potion.i2).color());
-			graphics.fillOval(x1, y1, size, size);
-			x1 += size + (size / 3);
+				// Render ingredient #2
+				graphics.setColor(PotionIngredient.fromId(order.potion.i2).color());
+				graphics.fillOval(x1, y1, size, size);
+				x1 += size + (size / 3);
 
-			// Render ingredient #3
-			graphics.setColor(PotionIngredient.fromId(order.potion.i3).color());
-			graphics.fillOval(x1, y1, size, size);
-
+				// Render ingredient #3
+				graphics.setColor(PotionIngredient.fromId(order.potion.i3).color());
+				graphics.fillOval(x1, y1, size, size);
+			}
 		}
 
 		// END
